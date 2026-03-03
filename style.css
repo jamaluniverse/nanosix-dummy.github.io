@@ -1,0 +1,254 @@
+/* ── Global Typography ── */
+h1,
+h2,
+h3 {
+    font-family: 'Lexend', sans-serif;
+    font-weight: 800;
+}
+
+p,
+ul,
+li {
+    font-family: 'Sofia Sans', sans-serif;
+    font-weight: 400;
+}
+
+.scroll-reveal {
+    opacity: 0.2;
+    transform: translateY(30px);
+    will-change: transform, opacity;
+}
+
+/* ── Transparent Header ── */
+.glass-header {
+    background: transparent;
+    border-bottom: none;
+    box-shadow: none;
+}
+
+/* ── Liquid Glass Pill (used on left nav group & right action group) ── */
+.glass-pill {
+    background: rgb(246, 246, 228, 0.2);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgb(255, 255, 255, 0.08);
+    width: 75%;
+    height: 3.1rem;
+    padding-left: 2%;
+    padding-right: 4%;
+    border-radius: 9999px;
+}
+
+/* ── Nav Links ── */
+.nav-link {
+    color: #fff;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.nav-link:hover {
+    color: #aab952;
+}
+
+.nav-link {
+    mix-blend-mode: negative;
+}
+
+/* ── Action icon buttons ── */
+.action-icon-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.4rem;
+    height: 2.4rem;
+    border-radius: 9999px;
+    background: #aab952;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    color: #fff;
+    transition: background 0.2s;
+    flex-shrink: 0;
+}
+
+.action-icon-btn:hover {
+    background: #aab952;
+}
+
+/* ── Right pill: smooth width expansion ── */
+#right-pill {
+    background: #F6F6E4;
+    transition:
+        width 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+        padding 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+        background-color 0.45s ease;
+    overflow: hidden;
+    width: auto;
+    min-width: auto;
+    height: 3.1rem;
+    padding: 0.4rem;
+    white-space: nowrap;
+}
+
+#right-pill.pill-active {
+    background: #F6F6E4;
+    /* Darker green from image */
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+#right-pill.pill-dark {
+    background: rgba(46, 101, 20, 0.75) !important;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Base icon button transition */
+.action-icon-btn.icon-hidden {
+    transform: translateX(-20px);
+    opacity: 0;
+    width: 0;
+    margin: 0;
+    padding: 0;
+    pointer-events: none;
+}
+
+/* ── Call number panel ── */
+#call-panel {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: #aab952;
+    border-radius: 9999px;
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+
+    /* Start: invisible and shifted right to "expand" left */
+    max-width: 0;
+    height: 2.4rem;
+    opacity: 0;
+    overflow: hidden;
+    transform: translateX(20px);
+    transition:
+        max-width 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+        opacity 0.3s ease,
+        transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Active state: slides in */
+#call-panel.call-open {
+    padding-left: 12px;
+    max-width: 300px;
+    opacity: 1;
+    transform: translateX(0);
+}
+
+#call-panel .call-panel-icon {
+    padding-right: 12px;
+    font-size: 1.2rem;
+    /* Slight tilt like image */
+}
+
+/* ── Email panel ── */
+#email-panel {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: #AAB952;
+    border-radius: 9999px;
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+
+    /* Start: invisible and shifted right to "expand" left */
+    max-width: 0;
+    height: 2.4rem;
+    opacity: 0;
+    overflow: hidden;
+    transform: translateX(20px);
+    transition:
+        max-width 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+        opacity 0.3s ease,
+        transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Active state: slides in */
+#email-panel.email-open {
+    padding-left: 12px;
+    max-width: 300px;
+    opacity: 1;
+    transform: translateX(0);
+}
+
+#email-panel .email-panel-icon {
+    padding-right: 12px;
+    font-size: 1.2rem;
+}
+
+.number-text,
+.email-text {
+    font-family: 'Sofia Sans', sans-serif;
+    font-weight: 500;
+}
+
+/* ── Sticky Scroll Features ── */
+.bg-transition {
+    transition: background-color 1.2s cubic-bezier(0.4, 0, 0.2, 1), background-image 1.2s ease-in-out;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#features-bg-container {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+#features-bg {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    transition: background-color 1.2s ease-in-out, background-image 1.2s ease-in-out;
+}
+
+/* Semi-transparent overlay for text readability */
+#features-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    /* Dark overlay */
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Ensure content stays above overlay */
+.bg-transition>* {
+    position: relative;
+    z-index: 2;
+}
+
+.feature-card {
+    opacity: 0.3;
+    transform: scale(0.95);
+    transition: opacity 0.6s ease, transform 0.6s ease, border-color 0.6s ease;
+}
+
+.feature-card.feature-card-active {
+    opacity: 1;
+    transform: scale(1);
+    border-color: rgba(170, 185, 82, 0.5);
+    /* Primary color glow */
+    filter: blur(0);
+}
+
+/* Ensure active card sticks out */
+.feature-card-active {
+    z-index: 2;
+}
