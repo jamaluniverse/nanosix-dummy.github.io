@@ -1,3 +1,9 @@
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+    /* Match header offset */
+}
+
 /* ── Global Typography ── */
 h1,
 h2,
@@ -8,7 +14,8 @@ h3 {
 
 p,
 ul,
-li {
+li,
+.font-sofia-sans {
     font-family: 'Sofia Sans', sans-serif;
     font-weight: 400;
 }
@@ -32,11 +39,52 @@ li {
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
     border: 1px solid rgb(255, 255, 255, 0.08);
-    width: 75%;
     height: 3.1rem;
-    padding-left: 2%;
-    padding-right: 4%;
     border-radius: 9999px;
+    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    /* Bouncy feel */
+}
+
+/* ── Specific Pill Widths ── */
+#left-pill {
+    width: 75%;
+}
+
+#left-pill.footer-active {
+    width: 100% !important;
+    background: rgba(46, 101, 20, 0.4);
+    /* Darker green background when in footer */
+}
+
+#right-pill {
+    transition:
+        transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+        opacity 0.4s ease,
+        width 0.5s ease,
+        margin 0.5s ease;
+}
+
+#right-pill.footer-active {
+    transform: scale(0);
+    opacity: 0;
+    width: 0 !important;
+    margin-left: 0 !important;
+    padding: 0 !important;
+    pointer-events: none;
+}
+
+#nav-container.footer-active {
+    margin-right: 2rem;
+    /* Move nav away from center or adjust as needed */
+}
+
+/* ── Custom Utilities (extracted from inline styles) ── */
+.header-main-flex {
+    gap: 2%;
+}
+
+.action-icon-font {
+    font-size: 18px !important;
 }
 
 /* ── Nav Links ── */
@@ -194,61 +242,107 @@ li {
 }
 
 /* ── Sticky Scroll Features ── */
-.bg-transition {
-    transition: background-color 1.2s cubic-bezier(0.4, 0, 0.2, 1), background-image 1.2s ease-in-out;
+#features-section {
+    position: relative;
+    overflow: visible;
+    /* Crucial for sticky children */
+}
+
+#features-bg-container {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    width: 100%;
+    z-index: 1;
+}
+
+#features-bg-container div {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 
-#features-bg-container {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 1;
-}
-
-#features-bg {
-    position: sticky;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    transition: background-color 1.2s ease-in-out, background-image 1.2s ease-in-out;
-}
-
-/* Semi-transparent overlay for text readability */
-#features-bg::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.75);
-    /* Dark overlay */
-    z-index: 1;
-    pointer-events: none;
-}
-
-/* Ensure content stays above overlay */
-.bg-transition>* {
-    position: relative;
-    z-index: 2;
+#features-bg-1,
+#features-bg-2 {
+    transition: opacity 1s ease-in-out;
 }
 
 .feature-card {
-    opacity: 0.3;
-    transform: scale(0.95);
-    transition: opacity 0.6s ease, transform 0.6s ease, border-color 0.6s ease;
+    transition: border-color 0.4s ease;
+    border: 1px solid transparent;
 }
 
-.feature-card.feature-card-active {
+/* ── Footer Redesign ── */
+.footer-outer-container {
+    background: #F6F6E4;
+    /* Match the section above */
+    padding: 0 1.5rem 1.5rem 1.5rem;
+}
+
+.footer-inner-card {
+    position: relative;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    background: #2E6514;
+    /* Fallback deep green */
+    min-height: 500px;
+}
+
+.footer-video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    opacity: 0.8;
+}
+
+.footer-contact-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: rgba(170, 185, 82, 0.4);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    color: #fff;
+    font-family: 'Sofia Sans', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-contact-pill:hover {
+    background: rgba(170, 185, 82, 0.6);
+    transform: translateY(-2px);
+}
+
+.footer-nav-link {
+    display: block;
+    font-family: 'Sofia Sans', sans-serif;
+    font-weight: 600;
+    color: #fff;
+    transition: all 0.3s ease;
+    opacity: 0.9;
+    width: fit-content;
+}
+
+.footer-nav-link:hover {
     opacity: 1;
-    transform: scale(1);
-    border-color: rgba(170, 185, 82, 0.5);
-    /* Primary color glow */
-    filter: blur(0);
+    transform: translateX(10px);
+    color: #AAB952;
 }
 
-/* Ensure active card sticks out */
-.feature-card-active {
-    z-index: 2;
+@media (max-width: 768px) {
+    .footer-outer-container {
+        padding: 0 1rem 1rem 1rem;
+    }
+
+    .footer-inner-card {
+        border-radius: 1.5rem;
+    }
 }

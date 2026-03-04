@@ -4,8 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>Nanosix Dummy</title>
+    <title>Nanosix - Dummy</title>
     <!-- Google Fonts -->
+    <link rel="icon" href="element/logo-standalone.svg">
     <link href="https://fonts.googleapis.com" rel="preconnect">
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
     <link
@@ -42,21 +43,24 @@
         <!-- Header -->
         <header class="fixed top-0 z-50 w-full">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div class="flex h-16 items-center" style="gap: 2%;">
+                <div class="flex h-16 items-center header-main-flex">
 
                     <!-- LEFT: Logo + Nav -->
-                    <div class="glass-pill flex flex-shrink-0 items-center justify-between px-4 py-2">
+                    <div id="left-pill"
+                        class="glass-pill flex flex-shrink-0 items-center justify-between px-8 py-2 transition-all duration-500">
                         <!-- Logo -->
                         <div class="flex items-center gap-2 shrink-0">
                             <img id="header-logo" class="h-5 w-auto" src="element/logo.svg" alt="logo">
                         </div>
-                        <!-- Desktop Nav -->
-                        <nav class="hidden md:flex items-center gap-6">
-                            <a href="#" class="nav-link">About Us</a>
-                            <a href="#" class="nav-link">Product</a>
-                            <a href="#" class="nav-link">Research</a>
-                            <a href="#" class="nav-link">People</a>
-                        </nav>
+                        <!-- Desktop Nav container for easier positioning -->
+                        <div id="nav-container" class="hidden md:flex items-center ml-auto transition-all duration-500">
+                            <nav class="flex items-center gap-6">
+                                <a href="#about" class="nav-link">About Us</a>
+                                <a href="#product" class="nav-link">Product</a>
+                                <a href="#research" class="nav-link">Research</a>
+                                <a href="#people" class="nav-link">People</a>
+                            </nav>
+                        </div>
                     </div>
 
                     <!-- RIGHT: Action Buttons + Mobile Menu -->
@@ -68,7 +72,7 @@
                                 <span class="material-symbols-outlined call-panel-icon">call</span>
                             </div>
                             <button id="call-btn" class="action-icon-btn hidden md:flex" aria-label="Call us">
-                                <span class="material-symbols-outlined" style="font-size:18px">call</span>
+                                <span class="material-symbols-outlined action-icon-font">call</span>
                             </button>
                         </div>
                         <div id="email-panel-container" class="relative flex items-center">
@@ -77,7 +81,7 @@
                                 <span class="material-symbols-outlined email-panel-icon">mail</span>
                             </div>
                             <button id="email-btn" class="action-icon-btn hidden md:flex" aria-label="Email us">
-                                <span class="material-symbols-outlined" style="font-size:18px">mail</span>
+                                <span class="material-symbols-outlined action-icon-font">mail</span>
                             </button>
                         </div>
                         <!-- Mobile Menu Button -->
@@ -101,7 +105,7 @@
                 </div>
             </section>
             <!-- About Section -->
-            <section class="relative z-10 py-24 bg-[#f6f6e4] light-section">
+            <section class="relative z-10 py-24 bg-[#f6f6e4] light-section" id="about">
                 <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-left scroll-reveal">
                     <h1 class="text-3xl md:text-3xl font-bold text-slate-900 mb-8">INFINITE INNOVATION</h1>
                     <p class="text-lg md:text-l md:leading-relaxed text-slate-700">
@@ -169,259 +173,357 @@
             </section>
 
             <!-- Sticky Scroll Features Section -->
-            <section id="features-section" class="relative z-10 py-24 bg-[#1A1A1A] border-y border-border-dark">
-                <!-- Sticky Background Layer -->
-                <div id="features-bg-container">
-                    <div id="features-bg" class="bg-transition"></div>
+            <section id="product" class="relative z-10 bg-[#1A1A1A]">
+                <!-- Sticky Background Container -->
+                <div id="features-bg-container" class="sticky top-0 h-screen w-full overflow-hidden">
+                    <div id="features-bg-1"
+                        class="absolute inset-0 bg-transition bg-cover bg-center opacity-100 z-10 transition-opacity duration-1000">
+                    </div>
+                    <div id="features-bg-2"
+                        class="absolute inset-0 bg-transition bg-cover bg-center opacity-0 z-0 transition-opacity duration-1000">
+                    </div>
+                    <!-- Dark Overlay for Readability -->
+                    <div
+                        class="absolute inset-0 bg-gradient-to-r from-[#2E6514]/10 from-10% via-[#2E6514]/60 via-60% to-[#2E6514]/80 to-90% z-20 pointer-events-none">
+                    </div>
                 </div>
-                <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
-                        <!-- Sticky Left Side -->
-                        <div class="lg:sticky lg:top-32 h-fit self-start text-left">
-                            <h2 class="text-[#AAB952] font-bold tracking-wide uppercase mb-3 text-sm">Key
-                                Features</h2>
-                            <h3 class="text-3xl md:text-4xl text-white leading-tight mb-6">
-                                Engineered for <br>Maximum Performance
-                            </h3>
-                            <p class="text-lg text-[#303030] mb-8 max-w-md">
-                                Discover the tools that power the next generation of business intelligence. Our
-                                platform
-                                is built to handle the complexities of modern data.
-                            </p>
-                            <a class="inline-flex items-center text-[#AAB952] font-bold hover:underline gap-1 group"
-                                href="#">
-                                Explore all features
-                                <span
-                                    class="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1">arrow_forward</span>
-                            </a>
-                        </div>
-                        <!-- Scrollable Right Side -->
-                        <div class="flex flex-col">
+
+                <!-- Scrolling Card Content Overlay -->
+                <div class="relative z-20 -mt-[100vh] mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-2">
+                        <!-- Left spacer -->
+                        <div class="hidden lg:block"></div>
+
+                        <!-- Right vertical card stack -->
+                        <div class="flex flex-col py-[50vh] gap-[20vh]">
                             <!-- Card 1 -->
-                            <div class="min-h-screen flex items-center transition-normal duration-300">
-                                <div class="feature-card group relative overflow-hidden rounded-xl bg-[#F6F6E4] w-full"
-                                    data-bg="#1A1A1A" data-img="element/product/card-image-01.webp">
-                                    <div class="p-8 md:p-12">
-                                        <p class="uppercase text-[#303030] font-bold tracking-widest text-md mb-4">
-                                            Product</p>
-                                        <img src="element/product-logo/product-logo-1.svg" class="h-12 w-auto mb-8"
-                                            alt="Product Logo">
-                                        <p class="text-[#303030] leading-relaxed text-m">Carbon-based nanoparticles
-                                            engineered to transform biodiesel performance. N6 enhances fuel atomization,
+                            <div class="feature-card group relative overflow-hidden rounded-xl bg-[#F6F6E4] w-full"
+                                data-bg="#1A1A1A" data-img="element/product/card-image-01.webp">
+                                <div class="p-8 md:p-12">
+                                    <p class="uppercase text-[#303030] font-bold tracking-widest text-md mb-4">
+                                        Product</p>
+                                    <img src="element/product-logo/product-logo-1.svg" class="h-12 w-auto mb-8"
+                                        alt="Product Logo">
+                                    <p class="text-[#303030] leading-relaxed text-m">Carbon-based nanoparticles
+                                        engineered to transform biodiesel performance. N6 enhances <b>fuel
+                                            atomization,
                                             improves combustion efficiency, and provides superior lubrication
-                                            properties—powering the smooth & clean energy transition with increased
-                                            engine power, improved fuel efficiency, and reduced emissions for diesel
-                                            vehicles and industrial applications.</p>
-                                    </div>
+                                            properties</b>—powering the smooth & clean energy transition with
+                                        increased
+                                        engine power, improved fuel efficiency, and reduced emissions for diesel
+                                        vehicles and industrial applications.</p>
                                 </div>
                             </div>
+
                             <!-- Card 2 -->
-                            <div class="min-h-screen flex items-center transition-normal duration-300">
-                                <div class="feature-card group relative overflow-hidden rounded-xl bg-[#F6F6E4] w-full"
-                                    data-bg="#0E1A1A" data-img="element/product/card-image-02.webp">
-                                    <div class="p-8 md:p-12">
-                                        <p class="uppercase text-[#303030] font-bold tracking-widest text-md mb-4">
-                                            Product</p>
-                                        <img src="element/product-logo/product-logo-1.svg" class="h-12 w-auto mb-8"
-                                            alt="Product Logo">
-                                        <p class="text-[#303030] leading-relaxed text-m">Carbon-based nanoparticles
-                                            engineered to transform biodiesel performance. N6 enhances fuel atomization,
-                                            improves combustion efficiency, and provides superior lubrication
-                                            properties—powering the smooth & clean energy transition with increased
-                                            engine power, improved fuel efficiency, and reduced emissions for diesel
-                                            vehicles and industrial applications.</p>
-                                    </div>
+                            <div class="feature-card group relative overflow-hidden rounded-xl bg-[#F6F6E4] w-full"
+                                data-bg="#0E1A1A" data-img="element/product/card-image-02.webp">
+                                <div class="p-8 md:p-12">
+                                    <p class="uppercase text-[#303030] font-bold tracking-widest text-md mb-4">
+                                        Product</p>
+                                    <img src="element/product-logo/product-logo-2.svg" class="h-12 w-auto mb-8"
+                                        alt="Product Logo">
+                                    <p class="text-[#303030] leading-relaxed text-m">Lubrinum transforms ordinary
+                                        engine oil into advanced protection. Nanoparticles create <b>molecular
+                                            barriers</b>
+                                        between metal surfaces, <b>reducing friction</b> and <b>wear</b> while
+                                        <b>improving fuel economy</b>. Universal compatibility means every engine
+                                        benefits from heavy-duty protection, extended lifespan, and enhanced
+                                        performance. Innovation beyond traditional lubrication.
+                                    </p>
                                 </div>
                             </div>
+
                             <!-- Card 3 -->
-                            <div class="min-h-screen flex items-center transition-normal duration-300">
-                                <div class="feature-card group relative overflow-hidden rounded-xl bg-[#F6F6E4] border border-white/5 hover:border-[#AAB952]/50 transition-all duration-300 w-full"
-                                    data-bg="#0D101A" data-img="element/product/card-image-03.webp">
-                                    <div class="p-8 md:p-12">
-                                        <p class="uppercase text-[#303030] font-bold tracking-widest text-md mb-4">
-                                            Product</p>
-                                        <img src="element/product-logo/product-logo-1.svg" class="h-12 w-auto mb-8"
-                                            alt="Product Logo">
-                                        <p class="text-[#303030] leading-relaxed text-m">Carbon-based nanoparticles
-                                            engineered to transform biodiesel performance. N6 enhances fuel atomization,
-                                            improves combustion efficiency, and provides superior lubrication
-                                            properties—powering the smooth & clean energy transition with increased
-                                            engine power, improved fuel efficiency, and reduced emissions for diesel
-                                            vehicles and industrial applications.</p>
-                                    </div>
+                            <div class="feature-card group relative overflow-hidden rounded-xl bg-[#F6F6E4] border border-white/5 hover:border-[#AAB952]/50 transition-all duration-300 w-full"
+                                data-bg="#0D101A" data-img="element/product/card-image-03.webp">
+                                <div class="p-8 md:p-12">
+                                    <p class="uppercase text-[#303030] font-bold tracking-widest text-md mb-4">
+                                        Product</p>
+                                    <img src="element/product-logo/product-logo-3.svg" class="h-12 w-auto mb-8"
+                                        alt="Product Logo">
+                                    <p class="text-[#303030] leading-relaxed text-m">Nanodion elevates turmeric into
+                                        biopharmaceutical-grade nano-herbal innovation. Nanotechnology breaks
+                                        curcumin
+                                        into molecular precision, <b>maximizing absorption and bioactivity.
+                                            Clear and odorless</b>, this scientifically-formulated beverage delivers
+                                        anti-inflammatory, anti-viral and antioxidant for health optimization.</p>
                                 </div>
                             </div>
+
                             <!-- Card 4 -->
-                            <div class="min-h-screen flex items-center transition-normal duration-300">
-                                <div class="feature-card group relative overflow-hidden rounded-xl bg-[#F6F6E4] border border-white/5 hover:border-[#AAB952]/50 transition-all duration-300 w-full"
-                                    data-bg="#1A0D0D" data-img="element/product/card-image-04.webp">
-                                    <div class="p-8 md:p-12">
-                                        <p class="uppercase text-[#303030] font-bold tracking-widest text-md mb-4">
-                                            Product</p>
-                                        <img src="element/product-logo/product-logo-1.svg" class="h-12 w-auto mb-8"
-                                            alt="Product Logo">
-                                        <p class="text-[#303030] leading-relaxed text-m">Carbon-based nanoparticles
-                                            engineered to transform biodiesel performance. N6 enhances fuel atomization,
-                                            improves combustion efficiency, and provides superior lubrication
-                                            properties—powering the smooth & clean energy transition with increased
-                                            engine power, improved fuel efficiency, and reduced emissions for diesel
-                                            vehicles and industrial applications.</p>
-                                    </div>
+                            <div class="feature-card group relative overflow-hidden rounded-xl bg-[#F6F6E4] border border-white/5 hover:border-[#AAB952]/50 transition-all duration-300 w-full"
+                                data-bg="#1A0D0D" data-img="element/product/card-image-04.webp">
+                                <div class="p-8 md:p-12">
+                                    <p class="uppercase text-[#303030] font-bold tracking-widest text-md mb-4">
+                                        Product</p>
+                                    <img src="element/product-logo/product-logo-4.svg" class="h-12 w-auto mb-8"
+                                        alt="Product Logo">
+                                    <p class="text-[#303030] leading-relaxed text-m">Biopharmaceutical-grade
+                                        nanocurcumin elevates turmeric to therapeutic excellence through
+                                        nanotechnology.
+                                        <b>Enhanced solubility and absorption</b> deliver potent <b>anti-cancer
+                                            activity, wound regeneration,</b>
+                                        and comprehensive wellness benefits spanning <b>anti-inflammatory,
+                                            antioxidant, antibacterial,</b>
+                                        and <b>antiviral</b> protection with optimized cellular targeting.
+                                    </p>
                                 </div>
                             </div>
+
                             <!-- Card 5 -->
-                            <div class="min-h-screen flex items-center transition-normal duration-300">
-                                <div class="feature-card group relative overflow-hidden rounded-xl bg-[#F6F6E4] border border-white/5 hover:border-[#AAB952]/50 transition-all duration-300 w-full"
-                                    data-bg="#130D1A" data-img="element/product/card-image-05.webp">
-                                    <div class="p-8 md:p-12">
-                                        <p class="uppercase text-[#303030] font-bold tracking-widest text-md mb-4">
-                                            Product</p>
-                                        <img src="element/product-logo/product-logo-1.svg" class="h-12 w-auto mb-8"
-                                            alt="Product Logo">
-                                        <p class="text-[#303030] leading-relaxed text-m">Carbon-based nanoparticles
-                                            engineered to transform biodiesel performance. N6 enhances fuel atomization,
-                                            improves combustion efficiency, and provides superior lubrication
-                                            properties—powering the smooth & clean energy transition with increased
-                                            engine power, improved fuel efficiency, and reduced emissions for diesel
-                                            vehicles and industrial applications.</p>
-                                    </div>
+                            <div class="feature-card group relative overflow-hidden rounded-xl bg-[#F6F6E4] border border-white/5 hover:border-[#AAB952]/50 transition-all duration-300 w-full"
+                                data-bg="#130D1A" data-img="element/product/card-image-05.webp">
+                                <div class="p-8 md:p-12">
+                                    <p class="uppercase text-[#303030] font-bold tracking-widest text-md mb-4">
+                                        Product</p>
+                                    <img src="element/product-logo/product-logo-5.svg" class="h-12 w-auto mb-8"
+                                        alt="Product Logo">
+                                    <p class="text-[#303030] leading-relaxed text-m">Advanced enzyme immobilization
+                                        system combining magnetic nanoparticle and graphene for enhanced cellulose
+                                        hydrolysis. Optimized for 2nd Gen bioethanol, featuring robust pH and
+                                        thermal
+                                        stability to support multiple reuse cycles and cost-efficient operations.
+                                    </p>
                                 </div>
                             </div>
+
                             <!-- Card 6 -->
-                            <div class="min-h-screen flex items-center transition-normal duration-300">
-                                <div class="feature-card group relative overflow-hidden rounded-xl bg-[#F6F6E4] border border-white/5 hover:border-[#AAB952]/50 transition-all duration-300 w-full"
-                                    data-bg="#1A160D" data-img="element/product/card-image-06.webp">
-                                    <div class="p-8 md:p-12">
-                                        <p class="uppercase text-[#303030] font-bold tracking-widest text-md mb-4">
-                                            Product</p>
-                                        <img src="element/product-logo/product-logo-1.svg" class="h-12 w-auto mb-8"
-                                            alt="Product Logo">
-                                        <p class="text-[#303030] leading-relaxed text-m">Carbon-based nanoparticles
-                                            engineered to transform biodiesel performance. N6 enhances fuel atomization,
-                                            improves combustion efficiency, and provides superior lubrication
-                                            properties—powering the smooth & clean energy transition with increased
-                                            engine power, improved fuel efficiency, and reduced emissions for diesel
-                                            vehicles and industrial applications.</p>
-                                    </div>
+                            <div class="feature-card group relative overflow-hidden rounded-xl bg-[#F6F6E4] border border-white/5 hover:border-[#AAB952]/50 transition-all duration-300 w-full"
+                                data-bg="#1A160D" data-img="element/product/card-image-06.webp">
+                                <div class="p-8 md:p-12">
+                                    <p class="uppercase text-[#303030] font-bold tracking-widest text-md mb-4">
+                                        Product</p>
+                                    <img src="element/product-logo/product-logo-6.svg" class="h-12 w-auto mb-8"
+                                        alt="Product Logo">
+                                    <p class="text-[#303030] leading-relaxed text-m">Glaszo nano-coating delivers
+                                        exceptional superhydrophobic protection for industrial and consumer
+                                        applications. From automotive glass to building facades, surfaces stay
+                                        water-free,
+                                        stain-resistant, and protected against environmental degradation.</p>
                                 </div>
                             </div>
+
                             <!-- Card 7 -->
-                            <div class="min-h-screen flex items-center transition-normal duration-300">
-                                <div class="feature-card group relative overflow-hidden rounded-xl bg-[#F6F6E4] border border-white/5 hover:border-[#AAB952]/50 transition-all duration-300 w-full"
-                                    data-bg="#0D1A16" data-img="element/product/card-image-07.webp">
-                                    <div class="p-8 md:p-12">
-                                        <p class="uppercase text-[#303030] font-bold tracking-widest text-md mb-4">
-                                            Product</p>
-                                        <img src="element/product-logo/product-logo-1.svg" class="h-12 w-auto mb-8"
-                                            alt="Product Logo">
-                                        <p class="text-[#303030] leading-relaxed text-m">Carbon-based nanoparticles
-                                            engineered to transform biodiesel performance. N6 enhances fuel atomization,
-                                            improves combustion efficiency, and provides superior lubrication
-                                            properties—powering the smooth & clean energy transition with increased
-                                            engine power, improved fuel efficiency, and reduced emissions for diesel
-                                            vehicles and industrial applications.</p>
-                                    </div>
+                            <div class="feature-card group relative overflow-hidden rounded-xl bg-[#F6F6E4] border border-white/5 hover:border-[#AAB952]/50 transition-all duration-300 w-full"
+                                data-bg="#0D1A16" data-img="element/product/card-image-07.webp">
+                                <div class="p-8 md:p-12">
+                                    <p class="uppercase text-[#303030] font-bold tracking-widest text-md mb-4">
+                                        Product</p>
+                                    <img src="element/product-logo/product-logo-7.svg" class="h-12 w-auto mb-8"
+                                        alt="Product Logo">
+                                    <p class="text-[#303030] leading-relaxed text-m">Ciliq Ugenix delivers
+                                        advanced nanomagnetic beads tailored for laboratories and the biotech
+                                        industry.
+                                        Featuring superior reactivity and customizable surfaces, our technology
+                                        ensures
+                                        versatile applications—from high-precision diagnostics to second-generation
+                                        bioethanol production</p>
                                 </div>
                             </div>
+
                             <!-- Card 8 -->
-                            <div class="min-h-screen flex items-center transition-normal duration-300">
-                                <div class="feature-card group relative overflow-hidden rounded-xl bg-[#F6F6E4] border border-white/5 hover:border-[#AAB952]/50 transition-all duration-300 w-full"
-                                    data-bg="#222222" data-img="element/product/card-image-08.webp">
-                                    <div class="p-8 md:p-12">
-                                        <p class="uppercase text-[#AAB952] font-bold tracking-widest text-md mb-4">
-                                            Product</p>
-                                        <img src="element/product-logo/product-logo-1.svg" class="h-12 w-auto mb-8"
-                                            alt="Product Logo">
-                                        <p class="text-[#303030] leading-relaxed text-m">Carbon-based nanoparticles
-                                            engineered to transform biodiesel performance. N6 enhances fuel atomization,
-                                            improves combustion efficiency, and provides superior lubrication
-                                            properties—powering the smooth & clean energy transition with increased
-                                            engine power, improved fuel efficiency, and reduced emissions for diesel
-                                            vehicles and industrial applications.</p>
-                                    </div>
+                            <div class="feature-card group relative overflow-hidden rounded-xl bg-[#F6F6E4] border border-white/5 hover:border-[#AAB952]/50 transition-all duration-300 w-full"
+                                data-bg="#222222" data-img="element/product/card-image-08.webp">
+                                <div class="p-8 md:p-12">
+                                    <p class="uppercase text-[#303030] font-bold tracking-widest text-md mb-4">
+                                        Product</p>
+                                    <img src="element/product-logo/product-logo-8.svg" class="h-12 w-auto mb-8"
+                                        alt="Product Logo">
+                                    <p class="text-[#303030] leading-relaxed text-m">Pure young coconut water
+                                        enhanced with nanotechnology for superior hydration and absorption. Free
+                                        from
+                                        preservatives, sweeteners, and artificial colorants—Nature's perfection,
+                                        refined
+                                        by science.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
+                <!-- Research Section -->
+                <section class="relative z-10 py-24 bg-[#C3D1B0] light-section" id="research">
+                    <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-left scroll-reveal">
+                        <h1 class="text-3xl md:text-3xl font-bold text-slate-900 mb-12 uppercase">Research</h1>
+                        <p class="leading-relaxed text-slate-800 max-w-4xl mb-12">
+                            This product is currently undergoing intensive development driven by Scientific Excellence,
+                            ensuring that every innovation is backed by rigorous research and validated results. We are
+                            committed to data-driven precision to deliver high-impact solutions that meet the highest
+                            standards of technical integrity.
+                        </p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-2 text-[#F6F6E4]">
+                            <!-- Research Tag 1 -->
+                            <div
+                                class="bg-[#2E6514] py-2 px-4 rounded-full text-center font-sofia-sans font-normal text-xs md:text-base border border-white/10 shadow-sm hover:bg-[#366617]">
+                                Gasoline Nano-Additive
+                            </div>
+                            <!-- Research Tag 2 -->
+                            <div
+                                class="bg-[#2E6514] py-2 px-4 rounded-full text-center font-sofia-sans font-normal text-xs md:text-base border border-white/10 shadow-sm hover:bg-[#366617]">
+                                2nd Gen Bioethanol
+                            </div>
+                            <!-- Research Tag 3 -->
+                            <div
+                                class="bg-[#2E6514] py-2 px-4 rounded-full text-center font-sofia-sans font-normal text-xs md:text-base border border-white/10 shadow-sm hover:bg-[#366617]">
+                                3rd Gen Biofuel
+                            </div>
+                            <!-- Research Tag 4 -->
+                            <div
+                                class="bg-[#2E6514] py-2 px-4 rounded-full text-center font-sofia-sans font-normal text-xs md:text-base border border-white/10 shadow-sm hover:bg-[#366617]">
+                                Axial Generator
+                            </div>
+                            <!-- Research Tag 5 -->
+                            <div
+                                class="bg-[#2E6514] py-2 px-4 rounded-full text-center font-sofia-sans font-normal text-xs md:text-base border border-white/10 shadow-sm hover:bg-[#366617]">
+                                Blue Turtle - Pedal Assist Hybrid EV
+                            </div>
+                            <!-- Research Tag 6 -->
+                            <div
+                                class="bg-[#2E6514] py-2 px-4 rounded-full text-center font-sofia-sans font-normal text-xs md:text-base border border-white/10 shadow-sm hover:bg-[#366617]">
+                                Nano-Herbs
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Our People Section -->
+                <section class="relative z-10 py-24 bg-[#F6F6E4] light-section" id="people">
+                    <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 scroll-reveal">
+                        <div class="flex flex-col lg:flex-row gap-16 items-start">
+                            <!-- Left Content: Heading + Text -->
+                            <div class="lg:w-2/5">
+                                <h2 class="text-3xl md:text-3xl font-bold text-slate-900 mb-12 uppercase">Our People
+                                </h2>
+                                <p class="text-normal leading-relaxed text-[#4A4A4A] font-sofia-sans">
+                                    We believe that groundbreaking innovation is born from real people solving
+                                    real-world challenges. Our team bridges the gap between nanosized precision and
+                                    human empowerment, building a foundation for sustainable futures through
+                                    collaborative excellence.
+                                </p>
+                            </div>
+
+                            <!-- Right Content: People Profiles -->
+                            <div class="lg:w-3/5 grid grid-cols-1 sm:grid-cols-2 gap-12">
+                                <!-- Person 1 -->
+                                <div class="flex flex-col max-w-[200px] mx-auto w-full">
+                                    <div
+                                        class="relative bg-[#AAB952] rounded-xl overflow-hidden aspect-[4/5] mb-4 shadow-lg">
+                                        <img src="element/people/People - 1.svg" alt="Team Member"
+                                            class="absolute inset-0 w-full h-full object-cover">
+                                    </div>
+                                    <h4 class="text-lg font-bold text-[#303030] text-center tracking-tight">
+                                        Founder & CEO</h4>
+                                </div>
+
+                                <!-- Person 2 -->
+                                <div class="flex flex-col max-w-[200px] mx-auto w-full">
+                                    <div
+                                        class="relative bg-[#AAB952] rounded-xl overflow-hidden aspect-[4/5] mb-4 shadow-lg">
+                                        <img src="element/people/People - 2.svg" alt="Team Member"
+                                            class="absolute inset-0 w-full h-full object-cover">
+                                    </div>
+                                    <h4 class="text-lg font-bold text-[#303030] text-center tracking-tight">
+                                        Technical Lead</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
         </main>
         <!-- Footer -->
-        <footer class="relative z-10 bg-background-dark border-t border-border-dark pt-16 pb-8">
-            <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
-                    <div class="col-span-1 md:col-span-1">
-                        <div class="flex items-center gap-2 mb-4">
-                            <span class="material-symbols-outlined text-primary text-3xl">hexagon</span>
-                            <span class="text-xl font-bold text-white">TechCorp</span>
-                        </div>
-                        <p class="text-text-secondary text-sm leading-relaxed">
-                            Empowering enterprises with next-generation intelligence tools. Building the future, today.
-                        </p>
-                    </div>
-                    <div>
-                        <h4 class="text-white font-bold mb-4">Product</h4>
-                        <ul class="space-y-3 text-sm text-text-secondary">
-                            <li class=""><a class="hover:text-primary transition-colors" href="#">Features</a></li>
-                            <li class=""><a class="hover:text-primary transition-colors" href="#">Integrations</a></li>
-                            <li class=""><a class="hover:text-primary transition-colors" href="#">Pricing</a></li>
-                            <li class=""><a class="hover:text-primary transition-colors" href="#">Changelog</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="text-white font-bold mb-4">Company</h4>
-                        <ul class="space-y-3 text-sm text-text-secondary">
-                            <li class=""><a class="hover:text-primary transition-colors" href="#">About
-                                    Us</a></li>
-                            <li class=""><a class="hover:text-primary transition-colors" href="#">Careers</a></li>
-                            <li class=""><a class="hover:text-primary transition-colors" href="#">Blog</a>
-                            </li>
-                            <li class=""><a class="hover:text-primary transition-colors" href="#">Contact</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="text-white font-bold mb-4">Legal</h4>
-                        <ul class="space-y-3 text-sm text-text-secondary">
-                            <li class=""><a class="hover:text-primary transition-colors" href="#">Privacy
-                                    Policy</a></li>
-                            <li class=""><a class="hover:text-primary transition-colors" href="#">Terms of
-                                    Service</a></li>
-                            <li class=""><a class="hover:text-primary transition-colors" href="#">Cookie
-                                    Policy</a></li>
-                        </ul>
-                    </div>
-                </div>
+        <footer class="relative z-10 footer-outer-container">
+            <div class="footer-inner-card">
+                <!-- Video Background -->
+                <video autoplay loop muted playsinline class="footer-video-bg">
+                    <source src="element/footer_media.webm" type="video/webm">
+                </video>
+                <!-- Overlay for depth -->
                 <div
-                    class="border-t border-border-dark pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-                    <p class="text-text-secondary text-sm">© 2024 TechCorp Inc. All rights reserved.</p>
-                    <div class="flex gap-4">
-                        <a class="text-text-secondary hover:text-white transition-colors" href="#">
-                            <svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                                <path
-                                    d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84">
-                                </path>
-                            </svg>
-                        </a>
-                        <a class="text-text-secondary hover:text-white transition-colors" href="#">
-                            <svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                                <path clip-rule="evenodd"
-                                    d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
-                                    fill-rule="evenodd"></path>
-                            </svg>
-                        </a>
-                        <a class="text-text-secondary hover:text-white transition-colors" href="#">
-                            <svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                                <path clip-rule="evenodd"
-                                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"
-                                    fill-rule="evenodd"></path>
-                            </svg>
-                        </a>
+                    class="absolute inset-0 bg-gradient-to-r from-[#2E6514]/90 from-10% via-[#2E6514]/60 via-60% to-[#2E6514]/10 to-90% z-[1]">
+                </div>
+
+                <div class="relative z-10 mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-24">
+                    <div class="flex flex-col md:flex-row justify-between items-start gap-12">
+                        <!-- Left Side: Logo & Office Info -->
+                        <div class="flex flex-col items-start max-w-md">
+                            <img src="element/logo.svg" alt="NANOSIX" class="h-8 mb-12">
+
+                            <h2 class="text-3xl md:text-4xl font-semibold text-white mb-6">Office</h2>
+
+                            <div class="mb-4">
+                                <h3 class="text-xl font-semibold text-white mb-3">Jakarta</h3>
+                                <p class="text-lg text-white/90 leading-relaxed font-sofia-sans mb-4">
+                                    Jl. Bekasi Timur Raya No. 200<br>
+                                    Cipinang - Pulogadung,<br>
+                                    Jakarta Timur
+                                </p>
+                            </div>
+
+                            <div class="flex flex-col gap-2 w-full sm:w-auto">
+                                <a href="tel:+620123456789" class="footer-contact-pill">
+                                    <span class="material-symbols-outlined text-m">call</span>
+                                    <span>+62 0123 4567 89</span>
+                                </a>
+                                <a href="mailto:contact@nanosix.com" class="footer-contact-pill">
+                                    <span class="material-symbols-outlined text-m">mail</span>
+                                    <span>contact@nanosix.com</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Right Side: Navigation -->
+                        <div class="md:w-1/3 lg:w-1/4 mt-8 md:mt-24">
+                            <nav>
+                                <ul class="flex flex-col gap-4">
+                                    <li><a href="#about" class="footer-nav-link text-lg md:text-xl">About Us</a></li>
+                                    <li><a href="#product" class="footer-nav-link text-lg md:text-xl">Product</a></li>
+                                    <li><a href="#research" class="footer-nav-link text-lg md:text-xl">Research</a></li>
+                                    <li><a href="#people" class="footer-nav-link text-lg md:text-xl">People</a></li>
+                                </ul>
+                            </nav>
+                        </div>
                     </div>
                 </div>
             </div>
         </footer>
+        <!-- Partner and Certified Section -->
+        <section class="relative z-10 py-12 bg-[#F6F6E4] light-section">
+            <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row justify-center items-center gap-12 md:gap-24">
+                    <!-- Our Partner Group -->
+                    <div class="flex flex-col items-center gap-6">
+                        <span class="text-slate-500 font-sofia-sans font-medium text-sm md:text-base">Our
+                            Partner:</span>
+                        <div class="flex items-center gap-6">
+                            <img src="element/partner-certified/UBK.png" alt="UBK"
+                                class="h-10 md:h-12 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300">
+                            <img src="element/partner-certified/10 November.png" alt="10 November"
+                                class="h-10 md:h-12 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300">
+                            <img src="element/partner-certified/FIB Unpad.png" alt="FIB Unpad"
+                                class="h-10 md:h-12 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300">
+                        </div>
+                    </div>
+
+                    <!-- Certified By Group -->
+                    <div class="flex flex-col items-center gap-6">
+                        <span class="text-slate-500 font-sofia-sans font-medium text-sm md:text-base">Certified
+                            By</span>
+                        <div class="flex items-center gap-6">
+                            <img src="element/partner-certified/Migas.png" alt="Migas"
+                                class="h-10 md:h-12 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300">
+                            <img src="element/partner-certified/10 November.png" alt="10 November"
+                                class="h-10 md:h-12 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300">
+                            <img src="element/partner-certified/Sucofindo.png" alt="Sucofindo"
+                                class="h-10 md:h-12 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300">
+                            <img src="element/partner-certified/SIG.png" alt="SIG"
+                                class="h-10 md:h-12 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 </body>
-
 
 </html>
