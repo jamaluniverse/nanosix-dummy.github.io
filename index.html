@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
     <title>Nanosix - Dummy</title>
     <!-- Google Fonts -->
     <link rel="icon" href="element/logo-standalone.svg">
@@ -53,7 +53,8 @@
                             <img id="header-logo" class="h-5 w-auto" src="element/logo.svg" alt="logo">
                         </div>
                         <!-- Desktop Nav container for easier positioning -->
-                        <div id="nav-container" class="hidden md:flex items-center ml-auto transition-all duration-500">
+                        <div id="nav-container"
+                            class="hidden tab:flex items-center ml-auto transition-all duration-500">
                             <nav class="flex items-center gap-6">
                                 <a href="#about" class="nav-link">About Us</a>
                                 <a href="#product" class="nav-link">Product</a>
@@ -66,28 +67,57 @@
                     <!-- RIGHT: Action Buttons + Mobile Menu -->
                     <div id="right-pill" class="glass-pill flex items-center justify-end gap-3 px-3 py-2 ml-auto">
                         <!-- Action Buttons (desktop) -->
-                        <div id="call-panel-container" class="relative flex items-center">
-                            <div id="call-panel" class="hidden md:flex items-center">
+                        <div id="call-panel-container" class="relative hidden tab:flex items-center">
+                            <div id="call-panel" class="hidden tab:flex items-center">
                                 <span class="number-text">+62 1234 5678 910</span>
                                 <span class="material-symbols-outlined call-panel-icon">call</span>
                             </div>
-                            <button id="call-btn" class="action-icon-btn hidden md:flex" aria-label="Call us">
+                            <button id="call-btn" class="action-icon-btn flex" aria-label="Call us">
                                 <span class="material-symbols-outlined action-icon-font">call</span>
                             </button>
                         </div>
-                        <div id="email-panel-container" class="relative flex items-center">
-                            <div id="email-panel" class="hidden md:flex items-center">
+                        <div id="email-panel-container" class="relative hidden tab:flex items-center">
+                            <div id="email-panel" class="hidden tab:flex items-center">
                                 <span class="email-text">contact@nanosix.com</span>
                                 <span class="material-symbols-outlined email-panel-icon">mail</span>
                             </div>
-                            <button id="email-btn" class="action-icon-btn hidden md:flex" aria-label="Email us">
+                            <button id="email-btn" class="action-icon-btn flex" aria-label="Email us">
                                 <span class="material-symbols-outlined action-icon-font">mail</span>
                             </button>
                         </div>
                         <!-- Mobile Menu Button -->
-                        <button class="flex md:hidden text-slate-300 hover:text-white" aria-label="Open menu">
+                        <button id="mobile-menu-btn" class="flex tab:hidden text-slate-300 hover:text-white"
+                            aria-label="Open menu">
                             <span class="material-symbols-outlined">menu</span>
                         </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Overlay -->
+            <div id="mobile-menu"
+                class="fixed inset-0 z-[60] bg-[#2E6514]/95 backdrop-blur-xl translate-x-full transition-transform duration-500 ease-in-out tab:hidden">
+                <div class="flex flex-col h-full p-8 pt-24">
+                    <button id="mobile-menu-close" class="absolute top-6 right-6 text-white" aria-label="Close menu">
+                        <span class="material-symbols-outlined text-4xl font-light">close</span>
+                    </button>
+
+                    <nav class="flex flex-col gap-8 mb-12">
+                        <a href="#about" class="mobile-nav-link text-3xl font-bold text-white">About Us</a>
+                        <a href="#product" class="mobile-nav-link text-3xl font-bold text-white">Product</a>
+                        <a href="#research" class="mobile-nav-link text-3xl font-bold text-white">Research</a>
+                        <a href="#people" class="mobile-nav-link text-3xl font-bold text-white">People</a>
+                    </nav>
+
+                    <div class="mt-auto flex flex-col gap-4">
+                        <a href="tel:+6212345678910" class="mobile-action-pill">
+                            <span class="material-symbols-outlined">call</span>
+                            <span>+62 1234 5678 910</span>
+                        </a>
+                        <a href="mailto:contact@nanosix.com" class="mobile-action-pill">
+                            <span class="material-symbols-outlined">mail</span>
+                            <span>contact@nanosix.com</span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -105,7 +135,7 @@
                 </div>
             </section>
             <!-- About Section -->
-            <section class="relative z-10 py-24 bg-[#f6f6e4] light-section" id="about">
+            <section class="relative z-10 py-8 tab:py-24 bg-[#f6f6e4] light-section" id="about">
                 <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-left scroll-reveal">
                     <h1 class="text-3xl md:text-3xl font-bold text-slate-900 mb-8">INFINITE INNOVATION</h1>
                     <p class="text-lg md:text-l md:leading-relaxed text-slate-700">
@@ -119,9 +149,10 @@
                 </div>
             </section>
             <!-- Vision Section -->
-            <section class="relative z-10 min-h-[75vh] flex items-center bg-[#f6f6e4] light-section">
+            <section
+                class="relative z-10 min-h-[40vh] tab:min-h-[75vh] py-8 tab:py-0 flex items-center bg-[#f6f6e4] light-section">
                 <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-left scroll-reveal w-full">
-                    <h1 class="text-3xl md:text-3xl font-bold text-slate-900 mb-12 uppercase">VISION</h1>
+                    <h1 class="text-3xl md:text-3xl font-bold text-slate-900 mb-6 tab:mb-12 uppercase">VISION</h1>
 
                     <div class="relative grid grid-cols-[auto_1fr] gap-4 md:gap-12 items-start">
                         <div
@@ -140,9 +171,9 @@
                 </div>
             </section>
             <!-- Values Section -->
-            <section class="relative z-10 min-h-3xl py-24 bg-[#f6f6e4] light-section">
+            <section class="relative z-10 min-h-3xl py-8 tab:py-24 bg-[#f6f6e4] light-section">
                 <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-left scroll-reveal">
-                    <h1 class="text-3xl md:text-3xl font-bold text-slate-900 mb-12 uppercase">VALUES</h1>
+                    <h1 class="text-3xl md:text-3xl font-bold text-slate-900 mb-6 tab:mb-12 uppercase">VALUES</h1>
                     <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
                         <!-- Value Card 1: Infinite Innovation -->
                         <div
@@ -173,7 +204,7 @@
             </section>
 
             <!-- Sticky Scroll Features Section -->
-            <section id="product" class="relative z-10 bg-[#1A1A1A]">
+            <section id="product" class="relative z-10 bg-[#1A1A1A] h-[600vh] desktop:h-auto">
                 <!-- Sticky Background Container -->
                 <div id="features-bg-container" class="sticky top-0 h-screen w-full overflow-hidden">
                     <div id="features-bg-1"
@@ -189,247 +220,248 @@
                 </div>
 
                 <!-- Scrolling Card Content Overlay -->
-                <div class="relative z-20 -mt-[100vh] mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-                    <div class="grid grid-cols-1 lg:grid-cols-2">
-                        <!-- Left spacer -->
-                        <div class="hidden lg:block"></div>
+                <!-- Use -mt-[100vh] on all to overlap sticky background -->
+                <div id="features-scroll-wrapper"
+                    class="sticky top-0 h-screen overflow-hidden z-50 -mt-[100vh] desktop:relative desktop:h-auto desktop:overflow-visible">
+                    <div id="features-cards-track"
+                        class="flex flex-row flex-nowrap items-end h-full w-max gap-[5vw] pb-[4vh] desktop:grid desktop:grid-cols-2 desktop:w-full desktop:px-0 desktop:gap-y-[15vh] desktop:pt-[15vh] desktop:pb-[20vh] desktop:max-w-5xl desktop:mx-auto desktop:h-auto desktop:items-start desktop:!transform-none">
+                        <!-- Centering Spacer Left -->
+                        <div class="shrink-0 w-[7.5vw] desktop:hidden"></div>
 
-                        <!-- Right vertical card stack -->
-                        <div class="flex flex-col py-[50vh] gap-[20vh]">
-                            <!-- Card 1 -->
-                            <div class="feature-card group relative overflow-hidden rounded-xl bg-[#F6F6E4] w-full"
-                                data-bg="#1A1A1A" data-img="element/product/card-image-01.webp">
-                                <div class="p-8 md:p-12">
-                                    <p class="uppercase text-[#303030] font-bold tracking-widest text-md mb-4">
-                                        Product</p>
-                                    <img src="element/product-logo/product-logo-1.svg" class="h-12 w-auto mb-8"
-                                        alt="Product Logo">
-                                    <p class="text-[#303030] leading-relaxed text-m">Carbon-based nanoparticles
-                                        engineered to transform biodiesel performance. N6 enhances <b>fuel
-                                            atomization,
-                                            improves combustion efficiency, and provides superior lubrication
-                                            properties</b>—powering the smooth & clean energy transition with
-                                        increased
-                                        engine power, improved fuel efficiency, and reduced emissions for diesel
-                                        vehicles and industrial applications.</p>
+                        <!-- Left Spacer for Desktop col-1 -->
+                        <div class="hidden desktop:block h-0"></div>
+
+                        <!-- Card 1 -->
+                        <div class="feature-card shrink-0 w-[85vw] desktop:w-full group relative overflow-hidden rounded-xl bg-[#F6F6E4]"
+                            data-bg="#1A1A1A" data-img="element/product/card-image-01.webp">
+                            <div class="p-8 md:p-12">
+                                <p class="uppercase text-[#303030] font-bold tracking-widest text-md mb-4">Product</p>
+                                <img src="element/product-logo/product-logo-1.svg"
+                                    class="hidden desktop:block h-12 w-auto mb-8" alt="Product Logo">
+                                <img src="element/product-logo/mono/product-logo-1.svg"
+                                    class="desktop:hidden h-12 w-auto mb-8" alt="Product Logo Mono">
+                                <p class="text-[#303030] leading-relaxed text-m">Carbon-based nanoparticles engineered
+                                    to transform biodiesel performance. N6 enhances <b>fuel atomization, improves
+                                        combustion efficiency, and provides superior lubrication properties</b>—powering
+                                    the smooth & clean energy transition.</p>
+                            </div>
+                        </div>
+
+                        <div class="hidden desktop:block h-0"></div>
+
+                        <!-- Card 2 -->
+                        <div class="feature-card shrink-0 w-[85vw] desktop:w-full group relative overflow-hidden rounded-xl bg-[#F6F6E4]"
+                            data-bg="#0E1A1A" data-img="element/product/card-image-02.webp">
+                            <div class="p-8 md:p-12">
+                                <p class="uppercase text-[#303030] font-bold tracking-widest text-md mb-4">Product</p>
+                                <img src="element/product-logo/product-logo-2.svg"
+                                    class="hidden desktop:block h-12 w-auto mb-8" alt="Product Logo">
+                                <img src="element/product-logo/mono/product-logo-2.svg"
+                                    class="desktop:hidden h-12 w-auto mb-8" alt="Product Logo Mono">
+                                <p class="text-[#303030] leading-relaxed text-m">Lubrinum transforms ordinary engine oil
+                                    into advanced protection. Nanoparticles create <b>molecular barriers</b> between
+                                    metal surfaces, <b>reducing friction and wear</b> while <b>improving fuel
+                                        economy</b>.</p>
+                            </div>
+                        </div>
+
+                        <div class="hidden desktop:block h-0"></div>
+
+                        <!-- Card 3 -->
+                        <div class="feature-card shrink-0 w-[85vw] desktop:w-full group relative overflow-hidden rounded-xl bg-[#F6F6E4]"
+                            data-bg="#0D101A" data-img="element/product/card-image-03.webp">
+                            <div class="p-8 md:p-12">
+                                <p class="uppercase text-[#303030] font-bold tracking-widest text-md mb-4">Product</p>
+                                <img src="element/product-logo/product-logo-3.svg"
+                                    class="hidden desktop:block h-12 w-auto mb-8" alt="Product Logo">
+                                <img src="element/product-logo/mono/product-logo-3.svg"
+                                    class="desktop:hidden h-12 w-auto mb-8" alt="Product Logo Mono">
+                                <p class="text-[#303030] leading-relaxed text-m">Nanodion elevates turmeric into
+                                    biopharmaceutical-grade nano-herbal innovation. Nanotechnology breaks curcumin into
+                                    molecular precision, <b>maximizing absorption and bioactivity</b>.</p>
+                            </div>
+                        </div>
+
+                        <div class="hidden desktop:block h-0"></div>
+
+                        <!-- Card 4 -->
+                        <div class="feature-card shrink-0 w-[85vw] desktop:w-full group relative overflow-hidden rounded-xl bg-[#F6F6E4]"
+                            data-bg="#1A0D0D" data-img="element/product/card-image-04.webp">
+                            <div class="p-8 md:p-12">
+                                <p class="uppercase text-[#303030] font-bold tracking-widest text-md mb-4">Product</p>
+                                <img src="element/product-logo/product-logo-4.svg"
+                                    class="hidden desktop:block h-12 w-auto mb-8" alt="Product Logo">
+                                <img src="element/product-logo/mono/product-logo-4.svg"
+                                    class="desktop:hidden h-12 w-auto mb-8" alt="Product Logo Mono">
+                                <p class="text-[#303030] leading-relaxed text-m">Biopharmaceutical-grade nanocurcumin
+                                    delivers potent <b>anti-cancer activity, wound regeneration</b>, and comprehensive
+                                    wellness benefits spanning <b>anti-inflammatory and antioxidant</b> protection.</p>
+                            </div>
+                        </div>
+
+                        <div class="hidden desktop:block h-0"></div>
+
+                        <!-- Card 5 -->
+                        <div class="feature-card shrink-0 w-[85vw] desktop:w-full group relative overflow-hidden rounded-xl bg-[#F6F6E4]"
+                            data-bg="#130D1A" data-img="element/product/card-image-05.webp">
+                            <div class="p-8 md:p-12">
+                                <p class="uppercase text-[#303030] font-bold tracking-widest text-md mb-4">Product</p>
+                                <img src="element/product-logo/product-logo-5.svg"
+                                    class="hidden desktop:block h-12 w-auto mb-8" alt="Product Logo">
+                                <img src="element/product-logo/mono/product-logo-5.svg"
+                                    class="desktop:hidden h-12 w-auto mb-8" alt="Product Logo Mono">
+                                <p class="text-[#303030] leading-relaxed text-m">Advanced enzyme immobilization system
+                                    combining magnetic nanoparticle and graphene for enhanced cellulose hydrolysis.
+                                    Optimized for <b>2nd Gen bioethanol</b> production.</p>
+                            </div>
+                        </div>
+
+                        <div class="hidden desktop:block h-0"></div>
+
+                        <!-- Card 6 -->
+                        <div class="feature-card shrink-0 w-[85vw] desktop:w-full group relative overflow-hidden rounded-xl bg-[#F6F6E4]"
+                            data-bg="#1A160D" data-img="element/product/card-image-06.webp">
+                            <div class="p-8 md:p-12">
+                                <p class="uppercase text-[#303030] font-bold tracking-widest text-md mb-4">Product</p>
+                                <img src="element/product-logo/product-logo-6.svg"
+                                    class="hidden desktop:block h-12 w-auto mb-8" alt="Product Logo">
+                                <img src="element/product-logo/mono/product-logo-6.svg"
+                                    class="desktop:hidden h-12 w-auto mb-8" alt="Product Logo Mono">
+                                <p class="text-[#303030] leading-relaxed text-m">Glaszo nano-coating delivers
+                                    exceptional <b>superhydrophobic protection</b>. Surfaces stay water-free,
+                                    stain-resistant, and protected against environmental degradation.</p>
+                            </div>
+                        </div>
+
+                        <div class="hidden desktop:block h-0"></div>
+
+                        <!-- Card 7 -->
+                        <div class="feature-card shrink-0 w-[85vw] desktop:w-full group relative overflow-hidden rounded-xl bg-[#F6F6E4]"
+                            data-bg="#0D1A16" data-img="element/product/card-image-07.webp">
+                            <div class="p-8 md:p-12">
+                                <p class="uppercase text-[#303030] font-bold tracking-widest text-md mb-4">Product</p>
+                                <img src="element/product-logo/product-logo-7.svg"
+                                    class="hidden desktop:block h-12 w-auto mb-8" alt="Product Logo">
+                                <img src="element/product-logo/mono/product-logo-7.svg"
+                                    class="desktop:hidden h-12 w-auto mb-8" alt="Product Logo Mono">
+                                <p class="text-[#303030] leading-relaxed text-m">Ciliq Ugenix delivers advanced
+                                    nanomagnetic beads for laboratories and the biotech industry, featuring <b>superior
+                                        reactivity and customizable surfaces</b>.</p>
+                            </div>
+                        </div>
+
+                        <div class="hidden desktop:block h-0"></div>
+
+                        <!-- Card 8 -->
+                        <div class="feature-card shrink-0 w-[85vw] desktop:w-full group relative overflow-hidden rounded-xl bg-[#F6F6E4]"
+                            data-bg="#222222" data-img="element/product/card-image-08.webp">
+                            <div class="p-8 md:p-12">
+                                <p class="uppercase text-[#303030] font-bold tracking-widest text-md mb-4">Product</p>
+                                <img src="element/product-logo/product-logo-8.svg"
+                                    class="hidden desktop:block h-12 w-auto mb-8" alt="Product Logo">
+                                <img src="element/product-logo/mono/product-logo-8.svg"
+                                    class="desktop:hidden h-12 w-auto mb-8" alt="Product Logo Mono">
+                                <p class="text-[#303030] leading-relaxed text-m">Pure young coconut water enhanced with
+                                    nanotechnology for <b>superior hydration and absorption</b>. Nature's perfection,
+                                    refined by science.</p>
+                            </div>
+                        </div>
+                        <!-- Centering Spacer Right -->
+                        <div class="shrink-0 w-[7.5vw] desktop:hidden"></div>
+                    </div>
+                </div>
+            </section>
+            <!-- Research Section -->
+            <section class="relative z-10 py-24 bg-[#C3D1B0] light-section" id="research">
+                <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-left scroll-reveal">
+                    <h1 class="text-3xl md:text-3xl font-bold text-slate-900 mb-12 uppercase">Research</h1>
+                    <p class="leading-relaxed text-slate-800 max-w-4xl mb-12">
+                        This product is currently undergoing intensive development driven by Scientific Excellence,
+                        ensuring that every innovation is backed by rigorous research and validated results. We are
+                        committed to data-driven precision to deliver high-impact solutions that meet the highest
+                        standards of technical integrity.
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-2 text-[#F6F6E4]">
+                        <!-- Research Tag 1 -->
+                        <div
+                            class="bg-[#2E6514] py-2 px-4 rounded-full text-center font-sofia-sans font-normal text-xs md:text-base border border-white/10 shadow-sm hover:bg-[#366617]">
+                            Gasoline Nano-Additive
+                        </div>
+                        <!-- Research Tag 2 -->
+                        <div
+                            class="bg-[#2E6514] py-2 px-4 rounded-full text-center font-sofia-sans font-normal text-xs md:text-base border border-white/10 shadow-sm hover:bg-[#366617]">
+                            2nd Gen Bioethanol
+                        </div>
+                        <!-- Research Tag 3 -->
+                        <div
+                            class="bg-[#2E6514] py-2 px-4 rounded-full text-center font-sofia-sans font-normal text-xs md:text-base border border-white/10 shadow-sm hover:bg-[#366617]">
+                            3rd Gen Biofuel
+                        </div>
+                        <!-- Research Tag 4 -->
+                        <div
+                            class="bg-[#2E6514] py-2 px-4 rounded-full text-center font-sofia-sans font-normal text-xs md:text-base border border-white/10 shadow-sm hover:bg-[#366617]">
+                            Axial Generator
+                        </div>
+                        <!-- Research Tag 5 -->
+                        <div
+                            class="bg-[#2E6514] py-2 px-4 rounded-full text-center font-sofia-sans font-normal text-xs md:text-base border border-white/10 shadow-sm hover:bg-[#366617]">
+                            Blue Turtle - Pedal Assist Hybrid EV
+                        </div>
+                        <!-- Research Tag 6 -->
+                        <div
+                            class="bg-[#2E6514] py-2 px-4 rounded-full text-center font-sofia-sans font-normal text-xs md:text-base border border-white/10 shadow-sm hover:bg-[#366617]">
+                            Nano-Herbs
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Our People Section -->
+            <section class="relative z-10 py-24 bg-[#F6F6E4] light-section" id="people">
+                <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 scroll-reveal">
+                    <div class="flex flex-col min-[780px]:flex-row gap-12 min-[780px]:gap-16 items-start">
+                        <!-- Left Content: Heading + Text -->
+                        <div class="w-full min-[780px]:w-2/5">
+                            <h2 class="text-3xl md:text-3xl font-bold text-slate-900 mb-8 min-[780px]:mb-12 uppercase">
+                                Our People
+                            </h2>
+                            <p
+                                class="text-normal leading-relaxed text-[#4A4A4A] font-sofia-sans mb-12 min-[780px]:mb-0">
+                                We believe that groundbreaking innovation is born from real people solving
+                                real-world challenges. Our team bridges the gap between nanosized precision and
+                                human empowerment, building a foundation for sustainable futures through
+                                collaborative excellence.
+                            </p>
+                        </div>
+
+                        <!-- Right Content: People Profiles -->
+                        <div class="w-full min-[780px]:w-3/5 grid grid-cols-1 min-[364px]:grid-cols-2 gap-8 md:gap-12">
+                            <!-- Person 1 -->
+                            <div class="flex flex-col max-w-[200px] mx-auto w-full">
+                                <div
+                                    class="relative bg-[#AAB952] rounded-xl overflow-hidden aspect-[4/5] mb-4 shadow-lg">
+                                    <img src="element/people/People - 1.svg" alt="Team Member"
+                                        class="absolute inset-0 w-full h-full object-cover">
                                 </div>
+                                <h4 class="text-lg font-bold text-[#303030] text-center tracking-tight">
+                                    Founder & CEO</h4>
                             </div>
 
-                            <!-- Card 2 -->
-                            <div class="feature-card group relative overflow-hidden rounded-xl bg-[#F6F6E4] w-full"
-                                data-bg="#0E1A1A" data-img="element/product/card-image-02.webp">
-                                <div class="p-8 md:p-12">
-                                    <p class="uppercase text-[#303030] font-bold tracking-widest text-md mb-4">
-                                        Product</p>
-                                    <img src="element/product-logo/product-logo-2.svg" class="h-12 w-auto mb-8"
-                                        alt="Product Logo">
-                                    <p class="text-[#303030] leading-relaxed text-m">Lubrinum transforms ordinary
-                                        engine oil into advanced protection. Nanoparticles create <b>molecular
-                                            barriers</b>
-                                        between metal surfaces, <b>reducing friction</b> and <b>wear</b> while
-                                        <b>improving fuel economy</b>. Universal compatibility means every engine
-                                        benefits from heavy-duty protection, extended lifespan, and enhanced
-                                        performance. Innovation beyond traditional lubrication.
-                                    </p>
+                            <!-- Person 2 -->
+                            <div class="flex flex-col max-w-[200px] mx-auto w-full">
+                                <div
+                                    class="relative bg-[#AAB952] rounded-xl overflow-hidden aspect-[4/5] mb-4 shadow-lg">
+                                    <img src="element/people/People - 2.svg" alt="Team Member"
+                                        class="absolute inset-0 w-full h-full object-cover">
                                 </div>
-                            </div>
-
-                            <!-- Card 3 -->
-                            <div class="feature-card group relative overflow-hidden rounded-xl bg-[#F6F6E4] border border-white/5 hover:border-[#AAB952]/50 transition-all duration-300 w-full"
-                                data-bg="#0D101A" data-img="element/product/card-image-03.webp">
-                                <div class="p-8 md:p-12">
-                                    <p class="uppercase text-[#303030] font-bold tracking-widest text-md mb-4">
-                                        Product</p>
-                                    <img src="element/product-logo/product-logo-3.svg" class="h-12 w-auto mb-8"
-                                        alt="Product Logo">
-                                    <p class="text-[#303030] leading-relaxed text-m">Nanodion elevates turmeric into
-                                        biopharmaceutical-grade nano-herbal innovation. Nanotechnology breaks
-                                        curcumin
-                                        into molecular precision, <b>maximizing absorption and bioactivity.
-                                            Clear and odorless</b>, this scientifically-formulated beverage delivers
-                                        anti-inflammatory, anti-viral and antioxidant for health optimization.</p>
-                                </div>
-                            </div>
-
-                            <!-- Card 4 -->
-                            <div class="feature-card group relative overflow-hidden rounded-xl bg-[#F6F6E4] border border-white/5 hover:border-[#AAB952]/50 transition-all duration-300 w-full"
-                                data-bg="#1A0D0D" data-img="element/product/card-image-04.webp">
-                                <div class="p-8 md:p-12">
-                                    <p class="uppercase text-[#303030] font-bold tracking-widest text-md mb-4">
-                                        Product</p>
-                                    <img src="element/product-logo/product-logo-4.svg" class="h-12 w-auto mb-8"
-                                        alt="Product Logo">
-                                    <p class="text-[#303030] leading-relaxed text-m">Biopharmaceutical-grade
-                                        nanocurcumin elevates turmeric to therapeutic excellence through
-                                        nanotechnology.
-                                        <b>Enhanced solubility and absorption</b> deliver potent <b>anti-cancer
-                                            activity, wound regeneration,</b>
-                                        and comprehensive wellness benefits spanning <b>anti-inflammatory,
-                                            antioxidant, antibacterial,</b>
-                                        and <b>antiviral</b> protection with optimized cellular targeting.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <!-- Card 5 -->
-                            <div class="feature-card group relative overflow-hidden rounded-xl bg-[#F6F6E4] border border-white/5 hover:border-[#AAB952]/50 transition-all duration-300 w-full"
-                                data-bg="#130D1A" data-img="element/product/card-image-05.webp">
-                                <div class="p-8 md:p-12">
-                                    <p class="uppercase text-[#303030] font-bold tracking-widest text-md mb-4">
-                                        Product</p>
-                                    <img src="element/product-logo/product-logo-5.svg" class="h-12 w-auto mb-8"
-                                        alt="Product Logo">
-                                    <p class="text-[#303030] leading-relaxed text-m">Advanced enzyme immobilization
-                                        system combining magnetic nanoparticle and graphene for enhanced cellulose
-                                        hydrolysis. Optimized for 2nd Gen bioethanol, featuring robust pH and
-                                        thermal
-                                        stability to support multiple reuse cycles and cost-efficient operations.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <!-- Card 6 -->
-                            <div class="feature-card group relative overflow-hidden rounded-xl bg-[#F6F6E4] border border-white/5 hover:border-[#AAB952]/50 transition-all duration-300 w-full"
-                                data-bg="#1A160D" data-img="element/product/card-image-06.webp">
-                                <div class="p-8 md:p-12">
-                                    <p class="uppercase text-[#303030] font-bold tracking-widest text-md mb-4">
-                                        Product</p>
-                                    <img src="element/product-logo/product-logo-6.svg" class="h-12 w-auto mb-8"
-                                        alt="Product Logo">
-                                    <p class="text-[#303030] leading-relaxed text-m">Glaszo nano-coating delivers
-                                        exceptional superhydrophobic protection for industrial and consumer
-                                        applications. From automotive glass to building facades, surfaces stay
-                                        water-free,
-                                        stain-resistant, and protected against environmental degradation.</p>
-                                </div>
-                            </div>
-
-                            <!-- Card 7 -->
-                            <div class="feature-card group relative overflow-hidden rounded-xl bg-[#F6F6E4] border border-white/5 hover:border-[#AAB952]/50 transition-all duration-300 w-full"
-                                data-bg="#0D1A16" data-img="element/product/card-image-07.webp">
-                                <div class="p-8 md:p-12">
-                                    <p class="uppercase text-[#303030] font-bold tracking-widest text-md mb-4">
-                                        Product</p>
-                                    <img src="element/product-logo/product-logo-7.svg" class="h-12 w-auto mb-8"
-                                        alt="Product Logo">
-                                    <p class="text-[#303030] leading-relaxed text-m">Ciliq Ugenix delivers
-                                        advanced nanomagnetic beads tailored for laboratories and the biotech
-                                        industry.
-                                        Featuring superior reactivity and customizable surfaces, our technology
-                                        ensures
-                                        versatile applications—from high-precision diagnostics to second-generation
-                                        bioethanol production</p>
-                                </div>
-                            </div>
-
-                            <!-- Card 8 -->
-                            <div class="feature-card group relative overflow-hidden rounded-xl bg-[#F6F6E4] border border-white/5 hover:border-[#AAB952]/50 transition-all duration-300 w-full"
-                                data-bg="#222222" data-img="element/product/card-image-08.webp">
-                                <div class="p-8 md:p-12">
-                                    <p class="uppercase text-[#303030] font-bold tracking-widest text-md mb-4">
-                                        Product</p>
-                                    <img src="element/product-logo/product-logo-8.svg" class="h-12 w-auto mb-8"
-                                        alt="Product Logo">
-                                    <p class="text-[#303030] leading-relaxed text-m">Pure young coconut water
-                                        enhanced with nanotechnology for superior hydration and absorption. Free
-                                        from
-                                        preservatives, sweeteners, and artificial colorants—Nature's perfection,
-                                        refined
-                                        by science.</p>
-                                </div>
+                                <h4 class="text-lg font-bold text-[#303030] text-center tracking-tight">
+                                    Technical Lead</h4>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- Research Section -->
-                <section class="relative z-10 py-24 bg-[#C3D1B0] light-section" id="research">
-                    <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-left scroll-reveal">
-                        <h1 class="text-3xl md:text-3xl font-bold text-slate-900 mb-12 uppercase">Research</h1>
-                        <p class="leading-relaxed text-slate-800 max-w-4xl mb-12">
-                            This product is currently undergoing intensive development driven by Scientific Excellence,
-                            ensuring that every innovation is backed by rigorous research and validated results. We are
-                            committed to data-driven precision to deliver high-impact solutions that meet the highest
-                            standards of technical integrity.
-                        </p>
-
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-2 text-[#F6F6E4]">
-                            <!-- Research Tag 1 -->
-                            <div
-                                class="bg-[#2E6514] py-2 px-4 rounded-full text-center font-sofia-sans font-normal text-xs md:text-base border border-white/10 shadow-sm hover:bg-[#366617]">
-                                Gasoline Nano-Additive
-                            </div>
-                            <!-- Research Tag 2 -->
-                            <div
-                                class="bg-[#2E6514] py-2 px-4 rounded-full text-center font-sofia-sans font-normal text-xs md:text-base border border-white/10 shadow-sm hover:bg-[#366617]">
-                                2nd Gen Bioethanol
-                            </div>
-                            <!-- Research Tag 3 -->
-                            <div
-                                class="bg-[#2E6514] py-2 px-4 rounded-full text-center font-sofia-sans font-normal text-xs md:text-base border border-white/10 shadow-sm hover:bg-[#366617]">
-                                3rd Gen Biofuel
-                            </div>
-                            <!-- Research Tag 4 -->
-                            <div
-                                class="bg-[#2E6514] py-2 px-4 rounded-full text-center font-sofia-sans font-normal text-xs md:text-base border border-white/10 shadow-sm hover:bg-[#366617]">
-                                Axial Generator
-                            </div>
-                            <!-- Research Tag 5 -->
-                            <div
-                                class="bg-[#2E6514] py-2 px-4 rounded-full text-center font-sofia-sans font-normal text-xs md:text-base border border-white/10 shadow-sm hover:bg-[#366617]">
-                                Blue Turtle - Pedal Assist Hybrid EV
-                            </div>
-                            <!-- Research Tag 6 -->
-                            <div
-                                class="bg-[#2E6514] py-2 px-4 rounded-full text-center font-sofia-sans font-normal text-xs md:text-base border border-white/10 shadow-sm hover:bg-[#366617]">
-                                Nano-Herbs
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Our People Section -->
-                <section class="relative z-10 py-24 bg-[#F6F6E4] light-section" id="people">
-                    <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 scroll-reveal">
-                        <div class="flex flex-col lg:flex-row gap-16 items-start">
-                            <!-- Left Content: Heading + Text -->
-                            <div class="lg:w-2/5">
-                                <h2 class="text-3xl md:text-3xl font-bold text-slate-900 mb-12 uppercase">Our People
-                                </h2>
-                                <p class="text-normal leading-relaxed text-[#4A4A4A] font-sofia-sans">
-                                    We believe that groundbreaking innovation is born from real people solving
-                                    real-world challenges. Our team bridges the gap between nanosized precision and
-                                    human empowerment, building a foundation for sustainable futures through
-                                    collaborative excellence.
-                                </p>
-                            </div>
-
-                            <!-- Right Content: People Profiles -->
-                            <div class="lg:w-3/5 grid grid-cols-1 sm:grid-cols-2 gap-12">
-                                <!-- Person 1 -->
-                                <div class="flex flex-col max-w-[200px] mx-auto w-full">
-                                    <div
-                                        class="relative bg-[#AAB952] rounded-xl overflow-hidden aspect-[4/5] mb-4 shadow-lg">
-                                        <img src="element/people/People - 1.svg" alt="Team Member"
-                                            class="absolute inset-0 w-full h-full object-cover">
-                                    </div>
-                                    <h4 class="text-lg font-bold text-[#303030] text-center tracking-tight">
-                                        Founder & CEO</h4>
-                                </div>
-
-                                <!-- Person 2 -->
-                                <div class="flex flex-col max-w-[200px] mx-auto w-full">
-                                    <div
-                                        class="relative bg-[#AAB952] rounded-xl overflow-hidden aspect-[4/5] mb-4 shadow-lg">
-                                        <img src="element/people/People - 2.svg" alt="Team Member"
-                                            class="absolute inset-0 w-full h-full object-cover">
-                                    </div>
-                                    <h4 class="text-lg font-bold text-[#303030] text-center tracking-tight">
-                                        Technical Lead</h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+            </section>
         </main>
         <!-- Footer -->
         <footer class="relative z-10 footer-outer-container">

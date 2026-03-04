@@ -46,31 +46,55 @@ li,
 }
 
 /* ── Specific Pill Widths ── */
+.header-main-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    position: relative;
+}
+
 #left-pill {
-    width: 75%;
+    flex-grow: 0;
+    flex-shrink: 0;
+    width: fit-content;
+}
+
+@media (min-width: 826px) {
+    #left-pill {
+        flex-grow: 1;
+        width: auto;
+        margin-right: 2rem;
+    }
 }
 
 #left-pill.footer-active {
-    width: 100% !important;
     background: rgba(46, 101, 20, 0.4);
     /* Darker green background when in footer */
 }
 
 #right-pill {
+    margin-left: 1.5rem;
     transition:
         transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
         opacity 0.4s ease,
         width 0.5s ease,
-        margin 0.5s ease;
+        padding 0.5s ease;
 }
 
-#right-pill.footer-active {
-    transform: scale(0);
-    opacity: 0;
-    width: 0 !important;
-    margin-left: 0 !important;
-    padding: 0 !important;
-    pointer-events: none;
+@media (min-width: 826px) {
+    #right-pill.footer-active {
+        transform: scale(0);
+        opacity: 0;
+        width: 0 !important;
+        margin-left: 0 !important;
+        padding: 0 !important;
+        pointer-events: none;
+    }
+
+    #left-pill.footer-active {
+        width: 100% !important;
+    }
 }
 
 #nav-container.footer-active {
@@ -79,10 +103,6 @@ li,
 }
 
 /* ── Custom Utilities (extracted from inline styles) ── */
-.header-main-flex {
-    gap: 2%;
-}
-
 .action-icon-font {
     font-size: 18px !important;
 }
@@ -127,16 +147,24 @@ li,
 /* ── Right pill: smooth width expansion ── */
 #right-pill {
     background: #F6F6E4;
+    margin-left: auto;
+    /* Push to far right */
     transition:
         width 0.45s cubic-bezier(0.4, 0, 0.2, 1),
         padding 0.45s cubic-bezier(0.4, 0, 0.2, 1),
-        background-color 0.45s ease;
+        background-color 0.45s ease,
+        transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+        opacity 0.4s ease;
     overflow: hidden;
     width: auto;
-    min-width: auto;
+    min-width: 3.1rem;
+    /* Maintain circle shape for burger if empty */
+    display: flex;
+    justify-content: center;
     height: 3.1rem;
     padding: 0.4rem;
     white-space: nowrap;
+    flex-shrink: 0;
 }
 
 #right-pill.pill-active {
@@ -272,6 +300,45 @@ li,
     border: 1px solid transparent;
 }
 
+@media (max-width: 1024px) {
+    .feature-card {
+        height: 350px !important;
+        background: rgba(246, 246, 228, 0.25) !important;
+        backdrop-filter: blur(10px) saturate(180%);
+        -webkit-backdrop-filter: blur(20px) saturate(180%);
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    }
+
+    .feature-card p,
+    .feature-card b {
+        color: #F6F6E4 !important;
+    }
+}
+
+/* ── Content Loading Pulse ── */
+@keyframes pulse-loading {
+    0% {
+        opacity: 0.6;
+        transform: scale(0.98);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0.6;
+        transform: scale(0.98);
+    }
+}
+
+.img-loading-pulse {
+    animation: pulse-loading 1.5s ease-in-out infinite;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 0.5rem;
+}
+
 /* ── Footer Redesign ── */
 .footer-outer-container {
     background: #F6F6E4;
@@ -337,12 +404,89 @@ li,
     color: #AAB952;
 }
 
-@media (max-width: 768px) {
+/* ── Mobile Menu Styles ── */
+.mobile-nav-link {
+    font-family: 'Lexend', sans-serif;
+    transition: all 0.3s ease;
+    opacity: 0.8;
+}
+
+.mobile-nav-link:hover {
+    opacity: 1;
+    transform: translateX(10px);
+}
+
+.mobile-action-pill {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: rgba(170, 185, 82, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 9999px;
+    color: white;
+    font-family: 'Sofia Sans', sans-serif;
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.mobile-action-pill:hover {
+    background: rgba(170, 185, 82, 0.3);
+}
+
+#mobile-menu.menu-open {
+    transform: translateX(0);
+}
+
+@media (max-width: 1136px) {
+    #nav-container nav {
+        gap: 0.75rem;
+    }
+
+    .nav-link {
+        font-size: 0.8rem;
+    }
+
+    #left-pill {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+    }
+}
+
+@media (max-width: 950px) {
+    #nav-container nav {
+        gap: 0.5rem;
+    }
+
+    .nav-link {
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 825px) {
+    #left-pill {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+
     .footer-outer-container {
-        padding: 0 1rem 1rem 1rem;
+        padding: 0 1rem 1rem 1rem !important;
     }
 
     .footer-inner-card {
         border-radius: 1.5rem;
     }
+}
+
+/* ── Features Section Horizontal Scroll (Mobile/Tablet) ── */
+#features-cards-track {
+    will-change: transform;
+}
+
+@media (min-width: 1025px) {
+    #features-cards-track {
+        transform: none !important;
+    }
+
 }
