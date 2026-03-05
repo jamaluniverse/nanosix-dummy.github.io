@@ -301,6 +301,10 @@ li,
 }
 
 @media (max-width: 1024px) {
+    #features-overlay {
+        display: none !important;
+    }
+
     .feature-card {
         height: 350px !important;
         background: rgba(246, 246, 228, 0.25) !important;

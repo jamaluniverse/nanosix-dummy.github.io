@@ -231,7 +231,15 @@ function initFeaturesScroll() {
     let currentImg = '';
 
     const updateBackground = (target) => {
-        const bgImg = target.getAttribute('data-img');
+        let bgImg = target.getAttribute('data-img');
+
+        // Swap to mobile folder if on mobile/tablet
+        if (window.innerWidth < 1025) {
+            // Transform 'element/product/card-image-01.webp' -> 'element/product/mobile/card-image-01-mobile.webp'
+            bgImg = bgImg.replace('element/product/', 'element/product/mobile/');
+            bgImg = bgImg.replace('.webp', '-mobile.webp');
+        }
+
         const imgUrl = `url('${bgImg}')`;
         const bgColor = target.getAttribute('data-bg');
 
